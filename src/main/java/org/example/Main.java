@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static boolean isParsableToNumber(String string) {
+    private static boolean isParsableToNumber(String string) {
         try {
             Integer.parseInt(string);
             return true;
