@@ -2,9 +2,16 @@ package org.example;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import org.apache.commons.lang3.math.NumberUtils;
 
 public class Main {
+    public static boolean isParsableToNumber(String string) {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     public static void main(String[] args) {
 
         // Get file or user input
@@ -13,14 +20,14 @@ public class Main {
         if (args.length == 0) {
             System.out.println("Missing args");
             return;
-        } else if (NumberUtils.isParsable(args[0]) && Integer.parseInt(args[0]) > 0) {
+        } else if (isParsableToNumber(args[0]) && Integer.parseInt(args[0]) > 0) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter numbers separated by spaces:");
 
             String[] inputArray = scanner.nextLine().split("\\s+");
 
             for (String input : inputArray) {
-                if (NumberUtils.isParsable(input)) {
+                if (isParsableToNumber(input)) {
                     inputNumbers.add(Integer.parseInt(input));
                 }
             }
@@ -30,7 +37,7 @@ public class Main {
 
                 while (scanner.hasNextLine()) {
                     String data = scanner.nextLine();
-                    if (NumberUtils.isParsable(data)) {
+                    if (isParsableToNumber(data)) {
                         inputNumbers.add(Integer.parseInt(data));
                     }
                 }
